@@ -2,7 +2,7 @@
 
 A Spring Boot REST API project for managing employees and their leave requests using MySQL, Spring Data JPA, and Hibernate.
 
-## 📌 Project Overview
+##  Project Overview
 
 The Employee Leave Management System is a backend application developed using Spring Boot and MySQL.
 
@@ -24,7 +24,7 @@ The project establishes a relationship between Employee and LeaveRequest using S
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 The main objective of this project is to develop a Spring Boot REST API with MySQL database connectivity for managing employee information and leave requests.
 
@@ -32,7 +32,7 @@ The system maintains employee records and their corresponding leave requests.
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Java
 - Spring Boot
@@ -47,7 +47,7 @@ The system maintains employee records and their corresponding leave requests.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 leave
