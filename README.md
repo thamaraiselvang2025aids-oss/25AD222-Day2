@@ -206,7 +206,7 @@ Leave APIs
 | DELETE      | `/leaves/{id}`        | Delete Leave        |
 
 
-Employee Request
+#Employee Request
 
 POST /employees
        │
@@ -228,7 +228,7 @@ MySQL
        ▼
 employee table
 
-Leave Request
+#Leave Request
 
 POST /leaves
        │
@@ -249,8 +249,9 @@ MySQL
        │
        ▼
 leave_request table
+----------------------------------------------
 
-Project features
+#Project features
 
 Employee Management
         │
@@ -271,6 +272,7 @@ Leave Management
 Employee Leave History
         │
         └── View leaves of a particular employee
+--------------------------------------------------------
 
 Testing Status
 Employee APIs
@@ -292,11 +294,23 @@ Database
  Employee Table Created
  Leave Request Table Created
  Employee-Leave Relationship Created
+-----------------------------------------------------------
 
-Author
+#**Author**
 
 G. Thamarai Selvan
 
 B.Tech Artificial Intelligence and Data Science
 
 Sri Eshwar College of Engineering
+
+-----------------------------------------------------------
+
+**#db code**
+
+USE leavedb;
+
+SELECT * FROM employee;
+
+SELECT * FROM leave_request;
+-----------------------------------------------------------
