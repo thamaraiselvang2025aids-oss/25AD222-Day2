@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Leave Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">
+        Leave<span>Flow</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#employees">Employees</a>
+        <a href="#leaves">Leave Requests</a>
+    </div>
+</nav>
+
+
+<!-- Main Container -->
+<main>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="hero">
+
+        <div class="hero-content">
+
+            <p class="tag">EMPLOYEE MANAGEMENT SYSTEM</p>
+
+            <h1>
+                Manage Employee
+                <span>Leaves Easily.</span>
+            </h1>
+
+            <p class="description">
+                A simple employee leave management system
+                powered by Spring Boot, MySQL and JavaScript.
+            </p>
+
+            <div class="hero-buttons">
+                <button onclick="showEmployeeForm()">
+                    Add Employee
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="showLeaveForm()">
+                    Apply Leave
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Statistics -->
+    <section class="stats">
+
+        <div class="stat-card">
+            <h2 id="employeeCount">0</h2>
+            <p>Total Employees</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="leaveCount">0</h2>
+            <p>Total Leave Requests</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="pendingCount">0</h2>
+            <p>Pending Leaves</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="approvedCount">0</h2>
+            <p>Approved Leaves</p>
+        </div>
+
+    </section>
+
+
+    <!-- Employee Section -->
+    <section id="employees" class="section">
+
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">EMPLOYEES</p>
+
+                <h2>Employee Management</h2>
+
+                <p>
+                    View and manage all employees.
+                </p>
+            </div>
+
+            <button onclick="showEmployeeForm()">
+                + Add Employee
+            </button>
+
+        </div>
+
+
+        <!-- Employee Table -->
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody id="employeeTableBody">
+                <!-- Employees will be loaded here -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Leave Section -->
+    <section id="leaves" class="section">
+
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">LEAVE REQUESTS</p>
+
+                <h2>Leave Management</h2>
+
+                <p>
+                    Track employee leave requests and their status.
+                </p>
+            </div>
+
+            <button onclick="showLeaveForm()">
+                + Apply Leave
+            </button>
+
+        </div>
+
+
+        <!-- Leave Table -->
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Employee</th>
+                    <th>Leave Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="leaveTableBody">
+                <!-- Leave requests will be loaded here -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Employee Form Modal -->
+
+<div id="employeeModal" class="modal">
+
+    <div class="modal-content">
+
+            <span class="close"
+                  onclick="closeEmployeeForm()">
+                &times;
+            </span>
+
+        <h2>Add Employee</h2>
+
+        <form id="employeeForm">
+
+            <input
+                    type="text"
+                    id="employeeName"
+                    placeholder="Employee Name"
+                    required
+            >
+
+            <input
+                    type="email"
+                    id="employeeEmail"
+                    placeholder="Email"
+                    required
+            >
+
+            <input
+                    type="text"
+                    id="employeeDepartment"
+                    placeholder="Department"
+                    required
+            >
+
+            <input
+                    type="number"
+                    id="employeeSalary"
+                    placeholder="Salary"
+                    required
+            >
+
+            <button type="submit">
+                Save Employee
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- Leave Form Modal -->
+
+<div id="leaveModal" class="modal">
+
+    <div class="modal-content">
+
+            <span class="close"
+                  onclick="closeLeaveForm()">
+                &times;
+            </span>
+
+        <h2>Apply Leave</h2>
+
+        <form id="leaveForm">
+
+            <input
+                    type="number"
+                    id="leaveEmployeeId"
+                    placeholder="Employee ID"
+                    required
+            >
+
+            <select id="leaveType" required>
+
+                <option value="">
+                    Select Leave Type
+                </option>
+
+                <option value="CASUAL">
+                    Casual
+                </option>
+
+                <option value="SICK">
+                    Sick
+                </option>
+
+                <option value="EARNED">
+                    Earned
+                </option>
+
+            </select>
+
+
+            <label>Start Date</label>
+
+            <input
+                    type="date"
+                    id="startDate"
+                    required
+            >
+
+
+            <label>End Date</label>
+
+            <input
+                    type="date"
+                    id="endDate"
+                    required
+            >
+
+
+            <textarea
+                    id="leaveReason"
+                    placeholder="Reason"
+                    required>
+                </textarea>
+
+
+            <button type="submit">
+                Submit Leave Request
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- JavaScript -->
+
+<script src="script.js?v=2"></script>
+
+</body>
+</html>
